@@ -1,5 +1,6 @@
 # ERC20 Splitter
-[![Testing](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml/badge.svg)](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml)
+[![Build](https://github.com/ebellocchia/erc20_splitter/actions/workflows/build.yml/badge.svg)](https://github.com/ebellocchia/erc20_splitter/actions/workflows/build.yml)
+[![Test](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml/badge.svg)](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml)
 
 ## Introduction
 
