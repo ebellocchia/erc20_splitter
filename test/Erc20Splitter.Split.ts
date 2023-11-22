@@ -64,6 +64,32 @@ describe("Erc20Splitter.Split", () => {
       .to.equal(token_amount);
   });
 
+  it("should always split the amount among secondary addresses if the maximum token amount is set to zero", async () => {
+    const token_amount: number = constants.ERC20_TOKEN_SUPPLY;
+    const token_addr: string = test_ctx.mock_erc20.address;
+
+    // Set the maximum amount to zero
+    await test_ctx.splitter.setPrimaryAddressMaxAmount(token_addr, 0);
+
+    await test_ctx.mock_erc20
+      .connect(test_ctx.accounts.owner)
+      .transfer(test_ctx.splitter.address, token_amount);
+
+    await test_ctx.splitter.onERC20Received(token_addr, token_amount);
+
+    const secondary_addr_amounts: number[] = computeSecondaryAddrAmounts(
+      token_amount,
+      test_ctx.secondary_addresses
+    );
+
+    expect(await test_ctx.mock_erc20.balanceOf(test_ctx.primary_address))
+      .to.equal(0);
+    for (let i = 0; i < test_ctx.secondary_addresses.length; i++) {
+      expect(await test_ctx.mock_erc20.balanceOf(test_ctx.secondary_addresses[i][0]))
+        .to.equal(secondary_addr_amounts[i]);
+    }
+  });
+
   it("should transfer the entire amount to the primary address if the maximum token amount is not reached", async () => {
     const max_token_amount: number = Math.floor(constants.ERC20_TOKEN_SUPPLY / 10);
     const token_amount_1: number = max_token_amount / 4;
