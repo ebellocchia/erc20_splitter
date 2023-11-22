@@ -1,3 +1,5 @@
+[![Testing](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml/badge.svg)](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml)
+
 # Introduction
 
 Smart contract that splits the received ERC20 tokens among different wallets with different percentages.
