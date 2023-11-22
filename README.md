@@ -1,24 +1,25 @@
+# ERC20 Splitter
 [![Testing](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml/badge.svg)](https://github.com/ebellocchia/erc20_splitter/actions/workflows/test.yml)
 
-# Introduction
+## Introduction
 
 Smart contract that splits the received ERC20 tokens among different wallets with different percentages.
 
 The smart contract is upgradeable using a UUPS proxy, so it's deployed together with a `ERC1967Proxy` proxy contract.
 
-# Setup
+## Setup
 
 Install `yarn` if not installed:
 
     npm install -g yarn
 
-## Install package
+### Install package
 
 Simply run:
 
     npm i --include=dev
 
-## Compile
+### Compile
 
 - To compile the contract:
 
@@ -28,7 +29,7 @@ Simply run:
 
         yarn recompile
 
-## Run tests
+### Run tests
 
 - To run tests without coverage:
 
@@ -38,7 +39,7 @@ Simply run:
 
         yarn coverage
 
-## Deploy
+### Deploy
 
 To deploy the contract:
 
@@ -64,7 +65,7 @@ To upgrade the contract:
 
     yarn upgrade-to <NETWORK> --proxy-addr <PROXY_ADDRESS>
 
-## Configuration
+### Configuration
 
 Hardhat is configured with the following networks:
 
@@ -82,7 +83,7 @@ Hardhat is configured with the following networks:
 The API keys, RPC nodes and mnemonic shall be configured in the `.env` file.\
 You may need to modify the gas limit and price in the Hardhat configuration file for some networks (e.g. Polygon), to successfully execute the transactions (you'll get a gas error).
 
-# How it works
+## How it works
 
 The contract allows to define:
 
@@ -117,7 +118,7 @@ At the end of the three transfers, the balance of the addresses will be:
 
 For triggering the split after the ERC20 tokens are received, the `onERC20Received` function of the contract shall be called.
 
-# Functions
+## Functions
 
     function init(
         address primaryAddress_,
