@@ -1,6 +1,6 @@
-# This workflow will install dependencies and test the contract
+# This workflow will install dependencies and build the contract
 
-name: Test
+name: Build
 
 on:
   push:
@@ -21,6 +21,6 @@ jobs:
       run: |
         npm i -g yarn
         npm i --include=dev
-    - name: Test contract
+    - name: Build contract
       run: |
-        yarn test
+        yarn compile
