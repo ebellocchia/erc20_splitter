@@ -191,3 +191,7 @@ Function that shall be called when the ERC20 token with address `token_` is tran
 Calling this function will trigger the split of amount `amount_` of token `token_` among primary and secondary addresses.
 
 It must return its Solidity selector to confirm the token transfer (i.e. `IERC20Receiver.onERC20Received.selector`).
+
+# License
+
+This software is available under the MIT license.
