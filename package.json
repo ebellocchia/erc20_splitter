@@ -2,7 +2,7 @@
   "name": "erc20_splitter",
   "author": "Emanuele Bellocchia",
   "description": "Smart contract for splitting ERC20 tokens among different wallets with different percentages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
