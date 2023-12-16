@@ -1,4 +1,4 @@
-import { BigNumber, Contract, ContractFactory } from "ethers";
+import { BigNumber, Contract, ContractFactory, ContractTransaction } from "ethers";
 import { task } from "hardhat/config";
 import { splitString } from "./utils";
 
@@ -52,7 +52,8 @@ task("upgrade-to", "Upgrade contract")
     console.log("Upgrading contract...");
 
     const proxy_instance: Contract = await contract_factory.attach(taskArgs.proxyAddr);
-    proxy_instance.upgradeTo(logic_instance.address);
+    const tx: ContractTransaction = await proxy_instance.upgradeTo(logic_instance.address);
 
     console.log(`Erc20Splitter updated logic deployed to ${logic_instance.address}`);
+    console.log(`Transaction hash: ${tx.hash}`);
   });
