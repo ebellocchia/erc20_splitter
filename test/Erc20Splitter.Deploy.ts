@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { Contract } from "ethers";
 // Project
 import * as utils from "./Utils";
+import * as constants from "./Constants";
 
 
 describe("Erc20Splitter.Deploy", () => {
@@ -25,7 +26,7 @@ describe("Erc20Splitter.Deploy", () => {
   it("should upgrade the logic", async () => {
     const new_splitter_logic: Contract = await utils.deploySplitterUpgradedContract();
 
-    await expect(await test_ctx.splitter.upgradeTo(new_splitter_logic.address))
+    await expect(await test_ctx.splitter.upgradeToAndCall(new_splitter_logic.address, constants.EMPTY_BYTES))
       .not.to.be.reverted;
 
     test_ctx.splitter = await utils.getSplitterUpgradedContractAt(test_ctx.splitter.address);  // Update ABI
@@ -38,7 +39,7 @@ describe("Erc20Splitter.Deploy", () => {
       test_ctx.primary_address,
       test_ctx.secondary_addresses
     ))
-      .to.be.revertedWith("Initializable: contract is already initialized");
+      .to.be.revertedWithCustomError(test_ctx.splitter, "InvalidInitialization");
   });
 
   it("should revert if initializing the logic contract without a proxy", async () => {
@@ -47,6 +48,6 @@ describe("Erc20Splitter.Deploy", () => {
       test_ctx.primary_address,
       test_ctx.secondary_addresses
     ))
-      .to.be.revertedWith("Initializable: contract is already initialized");
+      .to.be.revertedWithCustomError(splitter, "InvalidInitialization");
   });
 });

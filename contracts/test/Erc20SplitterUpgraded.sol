@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 //=============================================================//
 //                           IMPORTS                           //
 //=============================================================//
-import "../Erc20Splitter.sol";
+import {Erc20Splitter} from "../Erc20Splitter.sol";
 
 
 /**

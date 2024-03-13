@@ -52,7 +52,7 @@ task("upgrade-to", "Upgrade contract")
     console.log("Upgrading contract...");
 
     const proxy_instance: Contract = await contract_factory.attach(taskArgs.proxyAddr);
-    const tx: ContractTransaction = await proxy_instance.upgradeTo(logic_instance.address);
+    const tx: ContractTransaction = await proxy_instance.upgradeToAndCall(logic_instance.address, "0x");
 
     console.log(`Erc20Splitter updated logic deployed to ${logic_instance.address}`);
     console.log(`Transaction hash: ${tx.hash}`);

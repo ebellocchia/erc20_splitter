@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 //=============================================================//
 //                           IMPORTS                           //
 //=============================================================//
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
 /**
  * @author Emanuele (@emanueleb88)
  * @title  Extension of {ERC20} that allows specifying an initial supply
  */
-abstract contract ERC20FixedSupply is 
-    ERC20 
+abstract contract ERC20FixedSupply is
+    ERC20
 {
     //=============================================================//
     //                           ERRORS                            //
